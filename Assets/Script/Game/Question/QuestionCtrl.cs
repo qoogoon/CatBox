@@ -205,7 +205,7 @@ public class QuestionCtrl : MonoBehaviour {
                 //오답 처리
                 GameObject obj = (GameObject)arrRenderQuestion[nBtnTouchCounter];
                 obj.GetComponent<Image>().color = Color.black;
-
+                nBtnTouchCounter++;
                 StartCoroutine(wrongQuestion(obj.GetComponent<QuestionObj>()));
                 
                 #if UNITY_ANDROID
