@@ -16,9 +16,17 @@ public class FailLineObj : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //고양이인지?
         if (collision.tag.Equals("Cat"))
         {
-            Constant.gameCtrl.gameOver();
+            //박스를 쓴 고양이 인지?
+            CatObj catObj = collision.GetComponent<CatObj>();
+            bool bBoxCat = catObj.BoxCat;
+            if (!bBoxCat)
+            {
+                Constant.gameCtrl.gameOver();
+            }
+            
         }
 
         

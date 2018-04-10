@@ -14,7 +14,7 @@ public class QuestionRespond : MonoBehaviour {
 		
 	}
 
-    public void renderQuestion(ArrayList arrLogicQuestion)
+    public ArrayList renderQuestion(ArrayList arrLogicQuestion)
     {
         //시작 위치 잡기
         int nQustionNum = arrLogicQuestion.Count;
@@ -53,6 +53,6 @@ public class QuestionRespond : MonoBehaviour {
             obj.transform.localPosition = (Vector3)arrQuestionPosition[i];
             arrRenderQuestion.Add(obj);
         }
-        Constant.questionCtrl.setRenderQuestion(arrRenderQuestion); //화면의 문제 오브젝트들 보내기
+        return arrRenderQuestion; //화면의 문제 오브젝트들 보내기
     }
 }

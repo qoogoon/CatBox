@@ -5,9 +5,15 @@ using UnityEngine;
 public class CatObj : MonoBehaviour {
     public float SPEED;
     public bool MOVE = true;
+    public bool BoxCat = false;     //박스를 쓴 상태
+
 	// Use this for initialization
 	void Start () {
-        Constant.questionCtrl.createQuestion();
+        if (!Constant.questionCtrl.isQuestion())
+        {
+            Constant.questionCtrl.createQuestion();
+        }
+        
         gameObject.name = "cat_" + Constant.catCtrl.getCatObjs().Count;
     }
 	
@@ -34,4 +40,6 @@ public class CatObj : MonoBehaviour {
             transform.Translate(Vector3.left * fSpeed *Time.deltaTime);
         }
     }
+
+    
 }
