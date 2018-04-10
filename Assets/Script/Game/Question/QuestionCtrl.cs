@@ -19,7 +19,7 @@ public class QuestionCtrl : MonoBehaviour {
     bool bQuestion = false;         //문제 출제 중 여부
     Coroutine m_comboTimer;         //콤보 타이머
     private bool bBtnUsing = false;
-    
+    private bool bBtnEnble = true;
     // Use this for initialization
     private void Awake()
     {
@@ -158,7 +158,7 @@ public class QuestionCtrl : MonoBehaviour {
     //문제 버튼
     public void QuestionBtnListner(int nBtnNo)  //0 : 가위, 2 : 마커, 3 : 커터, 1 : 테이프
     {   
-        if (bQuestion && !Constant.gameCtrl.getGameOverState() && !bBtnUsing && arrLogicQuestion.Count > 0)
+        if (bQuestion && !Constant.gameCtrl.getGameOverState() && !bBtnUsing && arrLogicQuestion.Count > 0 && bBtnEnble)
         {
             bBtnUsing = true;   //동시에 버튼 하나만 사용하게 하기위함
             if ((int)arrLogicQuestion[nBtnTouchCounter]%4 == nBtnNo || Constant.comboCtrl.isFever())
@@ -226,9 +226,11 @@ public class QuestionCtrl : MonoBehaviour {
     //오답 처리
     IEnumerator wrongQuestion(QuestionObj wrongObj)
     {
+        bBtnEnble = false;
         wrongObj.showWrongImage(true);
         yield return new WaitForSeconds(0.3f);
         clearQuestion();
         createQuestion();
+        bBtnEnble = true;
     }
 }
