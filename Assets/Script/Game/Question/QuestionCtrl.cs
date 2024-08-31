@@ -34,7 +34,13 @@ public class QuestionCtrl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            QuestionBtnListner(0);
+        }else if (Input.GetKeyDown(KeyCode.W))
+        {
+            QuestionBtnListner(1);
+        }
     }
 
     //문제 생성
